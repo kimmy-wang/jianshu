@@ -1,5 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
+import { Link } from 'react-router-dom';
+import { actionCreators, actionTypes } from './store'
 import {
     HeaderWrapper,
     HeaderContainer,
@@ -16,16 +19,16 @@ import {
     Addition,
     Button
 } from "./style";
-import {CSSTransition} from 'react-transition-group';
-import {actionCreators, actionTypes} from './store'
 
-class Header extends React.Component {
+class Header extends React.PureComponent {
     render() {
         const {focused, list, handleFocus, handleBlur} = this.props;
         return (
             <HeaderWrapper>
                 <HeaderContainer>
-                    <Logo/>
+                    <Link to='/'>
+                        <Logo/>
+                    </Link>
                     <Menu>
                         <MenuItem className='active'><i className="iconfont">&#xe634;</i>新闻</MenuItem>
                         <MenuItem><i className="iconfont">&#xe618;</i>音乐</MenuItem>

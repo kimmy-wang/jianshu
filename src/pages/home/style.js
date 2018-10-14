@@ -34,6 +34,29 @@ export const HomeRight = styled.div`
     padding-top: 30px;
 `;
 
+export const BackTop = styled.div`
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1040;
+    line-height: 20px;
+    border: 1px solid #dcdcdc;
+    background-color: #fff;
+    span {
+        display: block;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        box-sizing: border-box;
+        cursor: pointer;
+        .iconfont {
+            padding-top: 16px;
+            font-size: 20px;
+            display: block;
+        }
+    }
+`;
+
 /*热门专题样式组件 start*/
 export const TopicWrapper = styled.div`
     margin-top: 35px;
@@ -162,6 +185,20 @@ export const ArticleCoverImg = styled.a`
         border: 1px solid #f0f0f0;
     }
 `;
+
+export const LoadMore = styled.div`
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin: 30px auto 60px;
+    padding: 10px 15px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 20px;
+    color: #fff;
+    background-color: #a5a5a5;
+    cursor: pointer;
+`;
 /*文章样式组件 end*/
 
 /*推荐样式组件 start*/
@@ -180,5 +217,134 @@ export const RecommendItem = styled.div`
         vertical-align: middle;
     }
 `;
+/*推荐样式组件 end*/
 
-/*推荐样式组件 start*/
+/*下载App样式组件 start*/
+export const DownloadAppWrapper = styled.div`
+    margin-bottom: 30px;
+    padding: 10px 22px;
+    width: 100%;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    background-color: #fff;
+    .qrcode {
+        width: 60px;
+        height: 60px;
+        opacity: .85;
+    }
+    .info {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 7px;
+        .title {
+            font-size: 15px;
+            color: #333;
+            .ic-link {
+                margin-left: 2px;
+                font-size: 15px;
+            }
+        }
+        .description {
+            margin-top: 4px;
+            font-size: 13px;
+            color: #999;
+        }
+    }
+`;
+
+/*下载App样式组件 end*/
+
+/*推荐作者样式组件 start*/
+export const WriterWrapper = styled.div`
+    margin-bottom: 20px;
+    padding-top: 0;
+    font-size: 13px;
+    text-align: left;
+    .find-more {
+        display: block;
+        padding: 7px 7px 7px 12px;
+        width: 100%;
+        text-align: center;
+        font-size: 13px;
+        color: #787878;
+        background-color: #f7f7f7;
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+    }
+`;
+
+export const WriterTitle = styled.div`
+    margin-bottom: 20px;
+    padding-top: 0;
+    font-size: 13px;
+    color: #969696;
+    line-height: 20px;
+`;
+
+export const WriterInfoSwitch = styled.div`
+    display: block;
+    float: right;
+    background-color: transparent;
+    border-width: 0;
+    padding: 0;
+    cursor: pointer;
+    .refresh-icon {
+        display: inline-block;
+        font-size: 12px;
+        margin-right: 2px;
+        transition: all .2s ease-in;
+        transform: rotate(0deg);
+        transform-origin: center center;
+    }
+`;
+
+export const WriterContent = styled.div`
+    margin: 0 0 20px;
+    text-align: left;
+    box-sizing: border-box;
+`;
+
+export const WriterItem = styled.div`
+    margin-top: 15px;
+    .avatar {
+        display: block;
+        float: left;
+        width: 48px;
+        height: 48px;
+        margin-right: 10px;
+        cursor: pointer;
+        img {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+        }
+    }
+    .follow {
+        float: right;
+        margin-top: 5px;
+        padding: 0;
+        font-size: 13px;
+        color: #42c02e;
+        .ic-follow {
+            position: inherit;
+            width: inherit;
+            height: inherit;
+            font-size: 13px;
+        }
+    }
+    .name {
+        padding-top: 5px;
+        margin-right: 60px;
+        font-size: 14px;
+        display: block;
+        color: #333;
+    }
+    p {
+        margin-top: 2px;
+        font-size: 12px;
+        color: #969696;
+        margin: 0 0 10px;
+    }
+`;
+/*推荐作者样式组件 end*/

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
     ArticleWrapper,
     ArticleItem,
@@ -7,15 +8,18 @@ import {
     ArticleTitle,
     ArticleContent,
     ArticleMeta,
-    ArticleCoverImg
+    ArticleCoverImg,
+    LoadMore
 } from '../style';
 import { actionTypes, actionCreators } from '../store'
 
-class Article extends React.Component {
+class Article extends React.PureComponent {
     render() {
+        const { articlePage, loadMore } = this.props;
         return (
             <ArticleWrapper>
                 {this.getArticleList()}
+                <LoadMore onClick={() => loadMore(articlePage)}>阅读更多</LoadMore>
             </ArticleWrapper>
         )
     }
@@ -31,9 +35,11 @@ class Article extends React.Component {
             return (
                 <ArticleItem key={item.get('id')} className={item.get('imgUrl') ? 'has-img' : ''}>
                     <ArticleInfo>
-                        <ArticleTitle>
-                            {item.get('title')}
-                        </ArticleTitle>
+                        <Link to='/detail'>
+                            <ArticleTitle>
+                                {item.get('title')}
+                            </ArticleTitle>
+                        </Link>
                         <ArticleContent className='content'>
                             {item.get('content')}
                         </ArticleContent>
@@ -59,12 +65,16 @@ class Article extends React.Component {
 }
 
 const mapState = (state) => ({
-    articleList: state.getIn(['home', 'articleList'])
+    articleList: state.getIn(['home', 'articleList']),
+    articlePage: state.getIn(['home', 'articlePage'])
 });
 
 const mapDispatch = (dispatch) => ({
     getArticleListData() {
         dispatch(actionCreators[actionTypes.GET_ARTICLE_DATA]());
+    },
+    loadMore(page) {
+        dispatch(actionCreators[actionTypes.GET_MORE_ARTICLE_DATA]());
     }
 });
 

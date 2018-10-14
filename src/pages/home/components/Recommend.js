@@ -6,7 +6,7 @@ import {
 } from '../style';
 import { actionTypes, actionCreators } from '../store'
 
-class Recommend extends React.Component {
+class Recommend extends React.PureComponent {
     render() {
         return (
             <RecommendWrapper>

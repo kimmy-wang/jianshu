@@ -21,9 +21,7 @@ export const HeaderContainer = styled.div`
     margin: 0 auto;
 `;
 
-export const Logo = styled.a.attrs({
-    href: '/'
-})`
+export const Logo = styled.div`
     float: left;
     width: 100px;
     height: 100%;

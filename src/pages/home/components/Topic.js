@@ -7,7 +7,7 @@ import {
 } from '../style';
 import { actionTypes, actionCreators } from '../store'
 
-class Topic extends React.Component {
+class Topic extends React.PureComponent {
     render() {
         return (
             <TopicWrapper>
