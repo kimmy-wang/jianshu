@@ -2,6 +2,7 @@ import * as actionTypes from './actionTypes';
 import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
+    currentTab: '',
     focused: false,
     mouseEnter: false,
     hotSearchList: [],
@@ -22,6 +23,8 @@ export default (state = defaultState, action) => {
             return state.set('mouseEnter', action.mouseEnter);
         case actionTypes.TOGGLE_PAGE:
             return state.set('currentPage', action.page);
+        case actionTypes.TOGGLE_TAB:
+            return state.set('currentTab', action.currentTab);
         default:
             return state;
     }

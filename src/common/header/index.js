@@ -1,8 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { CSSTransition } from 'react-transition-group';
-import { Link } from 'react-router-dom';
-import { actionCreators, actionTypes } from './store'
+import {connect} from 'react-redux';
+import {CSSTransition} from 'react-transition-group';
+import {Link} from 'react-router-dom';
+import {actionCreators, actionTypes} from './store'
 import {
     HeaderWrapper,
     HeaderContainer,
@@ -22,7 +22,7 @@ import {
 
 class Header extends React.PureComponent {
     render() {
-        const {focused, list, handleFocus, handleBlur} = this.props;
+        const {focused, list, currentTab, handleFocus, handleBlur, toggleTab} = this.props;
         return (
             <HeaderWrapper>
                 <HeaderContainer>
@@ -30,10 +30,18 @@ class Header extends React.PureComponent {
                         <Logo/>
                     </Link>
                     <Menu>
-                        <MenuItem className='active'><i className="iconfont">&#xe634;</i>新闻</MenuItem>
-                        <MenuItem><i className="iconfont">&#xe618;</i>音乐</MenuItem>
-                        <MenuItem><i className="iconfont">&#xe652;</i>照片</MenuItem>
-                        <MenuItem><i className="iconfont">&#xe678;</i>视频</MenuItem>
+                        <Link to='/' onClick={() => toggleTab('')}>
+                            <MenuItem className={!currentTab ? 'active' : ''}><i className="iconfont">&#xe634;</i>新闻</MenuItem>
+                        </Link>
+                        <Link to='/song' onClick={() => toggleTab('song')}>
+                            <MenuItem className={currentTab === 'song' ? 'active' : ''}><i className="iconfont">&#xe618;</i>音乐</MenuItem>
+                        </Link>
+                        <Link to='/photo' onClick={() => toggleTab('photo')}>
+                            <MenuItem className={currentTab === 'photo' ? 'active' : ''}><i className="iconfont">&#xe652;</i>照片</MenuItem>
+                        </Link>
+                        <Link to='/video' onClick={() => toggleTab('video')}>
+                            <MenuItem className={currentTab === 'video' ? 'active' : ''}><i className="iconfont">&#xe678;</i>视频</MenuItem>
+                        </Link>
                         <SearchWrapper>
                             <CSSTransition
                                 in={focused}
@@ -92,7 +100,9 @@ class Header extends React.PureComponent {
                         <HotSearchInfoSwitch
                             onClick={() => togglePage(currentPage, totalPage, this.refreshIcon)}
                         >
-                            <i ref={(icon) => {this.refreshIcon = icon}} className="iconfont refresh-icon">&#xe790;</i>
+                            <i ref={(icon) => {
+                                this.refreshIcon = icon
+                            }} className="iconfont refresh-icon">&#xe790;</i>
                             换一批
                         </HotSearchInfoSwitch>
                     </HotSearchInfoTitle>
@@ -107,6 +117,7 @@ class Header extends React.PureComponent {
 }
 
 const mapState = (state) => ({
+    currentTab: state.getIn(['header', 'currentTab']),
     focused: state.getIn(['header', 'focused']),
     mouseEnter: state.getIn(['header', 'mouseEnter']),
     list: state.getIn(['header', 'hotSearchList']),
@@ -138,6 +149,9 @@ const mapDispatch = (dispatch) => ({
         refreshIcon.style.transform = `rotate(${(originAngle + 360)}deg)`;
         (currentPage === totalPage) && dispatch(actionCreators[actionTypes.TOGGLE_PAGE](1));
         (currentPage !== totalPage) && dispatch(actionCreators[actionTypes.TOGGLE_PAGE](currentPage + 1));
+    },
+    toggleTab(tabName) {
+        dispatch(actionCreators[actionTypes.TOGGLE_TAB](tabName));
     }
 });
 

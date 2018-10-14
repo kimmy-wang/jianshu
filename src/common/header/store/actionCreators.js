@@ -36,6 +36,12 @@ const actionCreators = {
             type: actionTypes.TOGGLE_PAGE,
             page
         }
+    },
+    [actionTypes.TOGGLE_TAB](tab) {
+        return {
+            type: actionTypes.TOGGLE_TAB,
+            currentTab: tab
+        }
     }
 };
 

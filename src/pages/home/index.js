@@ -13,6 +13,10 @@ import {
     BackTop
 } from './style';
 import { actionCreators, actionTypes} from './store';
+import {
+    actionTypes as headerActionTypes,
+    actionCreators as headerActionCreators
+} from "../../common/header/store";
 
 class Home extends React.PureComponent {
     render() {
@@ -56,6 +60,8 @@ class Home extends React.PureComponent {
     }
 
     componentDidMount() {
+        const { toggleTab } = this.props;
+        toggleTab('');
         window.addEventListener("scroll", this.bindScrollEvent.bind(this))
     }
 
@@ -80,6 +86,9 @@ const mapState = (state) => ({
 const mapDispatch = (dispatch) => ({
     changeBackTopStatus(flag) {
         dispatch(actionCreators[actionTypes.CHANGE_BACK_TOP_STATUS](flag));
+    },
+    toggleTab(tabName) {
+        dispatch(headerActionCreators[headerActionTypes.TOGGLE_TAB](tabName));
     }
 });
 
