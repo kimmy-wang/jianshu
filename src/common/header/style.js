@@ -3,10 +3,12 @@ import logoPic from '../../statics/logo.png';
 
 export const HeaderWrapper = styled.div`
     position: fixed;
+    z-index: 999;
     top: 0;
     left: 0;
     width: 100%;
     height: 56px;
+    background-color: #fff;
     border-bottom: 1px solid #f0f0f0;
 `;
 
@@ -58,7 +60,7 @@ export const MenuItem = styled.div`
 export const SearchWrapper = styled.div`
     position: relative;
     float: left;
-    .iconfont {
+    .search-icon {
         position: absolute;
         top: 14px;
         right: 5px;
@@ -108,6 +110,62 @@ export const MenuSearch = styled.input.attrs({
     &.focused {
         width: 240px;
     }
+`;
+
+export const SearchInfo = styled.div`
+    position: absolute;
+    left: 20px;
+    top: 56px;
+    width: 240px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0, 0 , 0, .2);
+`;
+
+export const HotSearchInfoTitle = styled.div`
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #969696;
+    line-height: 20px;
+`;
+
+export const HotSearchInfoSwitch = styled.span`
+    display: block;
+    float: right;
+    font-size: 13px;
+    color: #969696;
+    background-color: transparent;
+    border-width: 0;
+    padding: 0;
+    cursor: pointer;
+    .refresh-icon {
+        display: inline-block;
+        font-size: 12px;
+        margin-right: 2px;
+        transition: all .2s ease-in;
+        transform: rotate(0deg);
+        transform-origin: center center;
+    }
+`;
+
+export const HotSearchInfoList = styled.div`
+    overflow: hidden;
+`;
+
+export const HotSearchInfoItem = styled.a`
+    display: block;
+    float: left;
+    line-height: 20px;
+    padding: 2px 6px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #787878;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
 `;
 
 export const Addition = styled.div`
